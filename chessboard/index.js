@@ -3,8 +3,6 @@ function main() {
     constructor() {
       this.root = document.getElementById("root");
       this.root.appendChild(this.createBoard());
-      this.resetBtn = document.getElementById("reset");
-      this.resetBtn.addEventListener("click", this.resetStyle);
       this.clickedElem = null;
     }
     createBoard = () => {
@@ -48,6 +46,9 @@ function main() {
       return square;
     };
     setElement = (e) => {
+      if (this.clickedElem !== null) {
+        this.resetStyle();
+      }
       this.clickedElem = e.target;
       this.highlightDiagonals("set");
     };
